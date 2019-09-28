@@ -9,7 +9,7 @@ export function addSmurf(smurf) {
     return function(dispatch) {
         return axios.post("http://localhost:3333/smurfs", smurf)
         .then((res)=>{
-            dispatch(dispatch({ type: ADD_SMURF, payload: {result: res.data, smurf: smurf} }));
+            dispatch({ type: ADD_SMURF, payload: {result: res.data, smurf: smurf} });
         })
         .catch((err) => {
             console.log(err)
@@ -25,7 +25,7 @@ export function removeSmurf(smurf) {
     return function(dispatch) {
         return axios.delete(`http://localhost:3333/smurfs/${smurf}`, smurf)
         .then((res)=>{
-            dispatch(dispatch({ type: REMOVE_SMURF, payload: {result: res.data, smurf: smurf} }));
+            dispatch({ type: REMOVE_SMURF, payload: {result: res.data, smurf: smurf} });
         })
         .catch((err) => {
             console.log(err)
@@ -41,7 +41,7 @@ export function getSmurfs(){
     return function(dispatch) {
         return axios.get("http://localhost:3333/smurfs")
         .then((res)=>{
-            dispatch(dispatch({ type: GET_SMURFS, payload: res.data }));
+            dispatch({ type: GET_SMURFS, payload: res.data });
         })
         .catch((err) => {
             console.log(err)
