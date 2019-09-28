@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { connect } from 'react-redux';
 import { addSmurf, removeSmurf, getSmurfs } from '../actions/actions'
+import SmurfCard from './SmurfCard'
 
 class App extends Component {
   constructor(props){
@@ -25,8 +26,8 @@ class App extends Component {
     this.props.addSmurf(smurf);
   }
 
-  removeSmurf = (e) => {
-    this.props.removeSmurf(e.target.parentNode.id);
+  removeSmurf = (e, id) => {
+    this.props.removeSmurf(id);
   }
 
   render() {
@@ -41,7 +42,7 @@ class App extends Component {
         <input id="smurfAge"></input>
         <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} onClick={this.addSmurf}>Submit</button>
         
-        {this.props.state.smurfs.map(smurf => <h1 key={smurf.id} id={smurf.id}>{smurf.name}<button onClick={this.removeSmurf}>Execute</button></h1>)}
+        {this.props.state.smurfs.map(smurf => <SmurfCard key={smurf.id} id={smurf.id} smurf={smurf} removeSmurf={this.removeSmurf}/>)}
       </div>
     );
   }
