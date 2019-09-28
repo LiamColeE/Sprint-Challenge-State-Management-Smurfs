@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import "./App.css";
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { removeSmurf } from '../actions/actions'
 
 class SmurfCard extends Component {
   constructor(props){
@@ -8,7 +10,7 @@ class SmurfCard extends Component {
   }
 
   removeSmurf = (e, id) => {
-      this.props.removeSmurf(e,this.props.id)
+      this.props.removeSmurf(this.props.id)
   }
 
   render() {
@@ -25,4 +27,10 @@ class SmurfCard extends Component {
   }
 }
 
-export default SmurfCard;
+const mapStateToProps = state => {
+    return {
+      state
+    }
+  }
+  
+export default connect(mapStateToProps, { removeSmurf })(SmurfCard)

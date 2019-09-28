@@ -42,7 +42,7 @@ class App extends Component {
         <input id="smurfAge"></input>
         <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} onClick={this.addSmurf}>Submit</button>
         
-        {this.props.state.smurfs.map(smurf => <SmurfCard key={smurf.id} id={smurf.id} smurf={smurf} removeSmurf={this.removeSmurf}/>)}
+        {this.props.state.smurfs.map(smurf => <SmurfCard key={smurf.id} id={smurf.id} smurf={smurf}/>)}
       </div>
     );
   }
