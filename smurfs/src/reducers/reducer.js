@@ -12,7 +12,8 @@ function reducer(state = initialState, action) {
             let addSmurfs = action.payload.result
             return {...state, smurfs:addSmurfs};
         case REMOVE_SMURF:
-            return state
+            let removeSmurf = action.payload.result
+            return {...state, smurfs:removeSmurf};
         case GET_SMURFS:
             let smurfs = action.payload;
             return {...state, smurfs};

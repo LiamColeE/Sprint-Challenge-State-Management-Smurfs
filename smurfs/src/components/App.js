@@ -16,14 +16,17 @@ class App extends Component {
       age:""
     };
     smurf.name = document.querySelector("#smurfName").value;
+    document.querySelector("#smurfName").value = "";
     smurf.height = document.querySelector("#smurfHeight").value;
+    document.querySelector("#smurfHeight").value = "";
     smurf.age = document.querySelector("#smurfAge").value;
+    document.querySelector("#smurfAge").value = "";
     
     this.props.addSmurf(smurf);
   }
 
-  removeSmurf = () => {
-    this.props.removeSmurf()
+  removeSmurf = (e) => {
+    this.props.removeSmurf(e.target.parentNode.id);
   }
 
   render() {
@@ -38,7 +41,7 @@ class App extends Component {
         <input id="smurfAge"></input>
         <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} onClick={this.addSmurf}>Submit</button>
         
-        {this.props.state.smurfs.map(smurf => <h1>{smurf.name}<button onClick={this.removeSmurf}>X</button></h1>)}
+        {this.props.state.smurfs.map(smurf => <h1 key={smurf.id} id={smurf.id}>{smurf.name}<button onClick={this.removeSmurf}>Execute</button></h1>)}
       </div>
     );
   }

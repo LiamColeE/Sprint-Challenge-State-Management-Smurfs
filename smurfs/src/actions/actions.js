@@ -22,10 +22,18 @@ export function addSmurf(smurf) {
 }
 
 export function removeSmurf(smurf) {
-    console.log(smurf);
-    return {
-        type: REMOVE_SMURF,
-        payload: smurf
+    return function(dispatch) {
+        return axios.delete(`http://localhost:3333/smurfs/${smurf}`, smurf)
+        .then((res)=>{
+            dispatch(dispatch({ type: REMOVE_SMURF, payload: {result: res.data, smurf: smurf} }));
+        })
+        .catch((err) => {
+            console.log(err)
+            return {
+                type: FAILED_CALL,
+                payload: err
+            }
+        });
     }
 }
 
